@@ -34,6 +34,7 @@ namespace WindowsFormsApp4
                     int i = 0;
                     student_names[i] = tbStudentsName.Text;
                     listBox1.Items.Add(student_names[i]);
+                    i++;
                     result.Text = "Total Students: " + listBox1.Items.Count;
                 }
                 else
