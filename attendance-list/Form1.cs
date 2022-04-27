@@ -17,6 +17,11 @@ namespace WindowsFormsApp4
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Clicking the add button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -24,15 +29,19 @@ namespace WindowsFormsApp4
                 int.TryParse(tbStudentsCount.Text, out int students_count);
                 string[] student_names = new string[students_count];
 
-                int i = 0;
-                while (i < students_count)
+                if (listBox1.Items.Count < students_count)
                 {
+                    int i = 0;
                     student_names[i] = tbStudentsName.Text;
                     listBox1.Items.Add(student_names[i]);
                     result.Text = "Total Students: " + listBox1.Items.Count;
-                    i++;
                 }
-                MessageBox.Show($"Student count is {students_count} only.");
+                else
+                {
+                    MessageBox.Show($"Student count is {students_count} only.");
+                }
+               
+                
             }
             catch (Exception ex)
             {
@@ -40,17 +49,32 @@ namespace WindowsFormsApp4
             }
         }
 
+        /// <summary>
+        /// Clicking the clear button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             tbStudentsName.ResetText();
         }
 
+        /// <summary>
+        /// Clicking the clear list button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClearList_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
             result.Text = "Total Students: " + listBox1.Items.Count;
         }
 
+        /// <summary>
+        /// Clicking the Remove button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemoveStudent_Click(object sender, EventArgs e)
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
