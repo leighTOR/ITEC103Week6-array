@@ -24,19 +24,15 @@ namespace WindowsFormsApp4
                 int.TryParse(tbStudentsCount.Text, out int students_count);
                 string[] student_names = new string[students_count];
 
-                if (listBox1.Items.Count < students_count)
+                int i = 0;
+                while (i < students_count)
                 {
-                    int i = 0;
                     student_names[i] = tbStudentsName.Text;
                     listBox1.Items.Add(student_names[i]);
                     result.Text = "Total Students: " + listBox1.Items.Count;
+                    i++;
                 }
-                else
-                {
-                    MessageBox.Show($"Student count is {students_count} only.");
-                }
-               
-                
+                MessageBox.Show($"Student count is {students_count} only.");
             }
             catch (Exception ex)
             {
@@ -52,11 +48,13 @@ namespace WindowsFormsApp4
         private void btnClearList_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+            result.Text = "Total Students: " + listBox1.Items.Count;
         }
 
         private void btnRemoveStudent_Click(object sender, EventArgs e)
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
+            result.Text = "Total Students: " + listBox1.Items.Count;
         }
     }
 }
